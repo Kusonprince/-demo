@@ -8,9 +8,13 @@
 <body>
     <div id="test">测试</div>
     <script>
+        var testDemo = api.require('testApi')
         var test = document.getElementById('test')
         test.addEventListener('click', function () {
-
+            var params = {msg:'hello world'}
+            testDemo.showToast(params, function (result) {
+                
+            })
         },false)
     </script>
 </body>
