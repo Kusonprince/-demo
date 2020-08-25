@@ -12,6 +12,7 @@
     <div id="test">测试</div>
     <script>
         var testDemo = api.require('testApi')
+        alert(testDemo.toString())
         var test = document.getElementById('test')
         test.addEventListener('click', function () {
             var params = {msg:'hello world'}
