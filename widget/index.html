@@ -7,14 +7,16 @@
     <link rel="stylesheet" type="text/css" href="css/api.css" />
     <link rel="stylesheet" type="text/css" href="css/box.css" />
     <script type="text/javascript" src="script/public.js"></script>
+    <script type="text/javascript">
+        var testDemo;
+        apiready = function(){
+            testDemo = api.require('testApi');
+        }
+    </script>
 </head>
 <body>
     <div id="test">测试</div>
     <script>
-        alert("test")
-        alert(api)
-        var testDemo = api.require('testApi')
-        alert(testDemo.toString())
         var test = document.getElementById('test')
         test.addEventListener('click', function () {
             var params = {msg:'hello world'}
