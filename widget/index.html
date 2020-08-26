@@ -8,25 +8,15 @@
     <link rel="stylesheet" type="text/css" href="css/box.css" />
     <script type="text/javascript" src="script/public.js"></script>
     <script type="text/javascript">
-        var testDemo;
         var paySdk;
         apiready = function(){
-            testDemo = api.require('testApi');
             paySdk = api.require('paySdk');
         }
     </script>
 </head>
 <body>
-    <div id="test">测试</div>
     <div id="test2">测试拉起刷脸</div>
     <script>
-        var test = document.getElementById('test')
-        test.addEventListener('click', function () {
-            var params = {msg:'hello world'}
-            testDemo.showToast(params, function (result) {
-                
-            })
-        },false)
         var test2 = document.getElementById("test2")
         test2.addEventListener('click', function () {
             var params = {
