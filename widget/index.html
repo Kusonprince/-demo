@@ -23,8 +23,12 @@
                 orderInfo: 'test',
                 parentMerchantNo: '1088165576',
             }
-            paySdk.startPay(params, function (result) {
-                alert(result)
+            paySdk.startPay(params, function (ret, error) {
+                if (ret) {
+                    alert(ret)
+                } else {
+                    alert(error)
+                }
             })
         },false)
     </script>
