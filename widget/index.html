@@ -19,8 +19,14 @@
     <script>
         var test2 = document.getElementById("test2")
         test2.addEventListener('click', function () {
+            var payways = [{payWay:'ALIPAY_SDK_ZFB'},{payWay:'FACEPAY_SDK_YP',slogan:'推荐'},{payWay:'WECHATPAY_SDK_WX'},{payWay:'UNIONPAY_SDK_YP'}]
+            var orderInfo = {
+                orderAmount:"0.02",
+                orderName:"100抖币",
+                payWays:payways,
+            }
             var params = {
-                orderInfo: 'test',
+                orderInfo: JSON.stringify(orderInfo),
                 parentMerchantNo: '1088165576',
             }
             paySdk.startPay(params, function (ret, error) {
