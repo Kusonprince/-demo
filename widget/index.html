@@ -30,6 +30,7 @@
                 orderInfo: JSON.stringify(orderInfo),
                 parentMerchantNo: '1088165576',
             }
+            paySdk.setCurrentEnvironment({environment:2})
             paySdk.startPay(params, function (ret, error) {
                 if (ret) {
                     alert(JSON.stringify(ret))
