@@ -24,13 +24,13 @@
                 orderAmount:"0.02",
                 orderName:"100抖币",
                 payWays:payways,
-                requestNo:"TR1001010220200831046648",
+                requestNo:"TR100102092020083113246780",
             }
             var params = {
                 orderInfo: JSON.stringify(orderInfo),
                 parentMerchantNo: '1088165576',
             }
-            paySdk.setCurrentEnvironment({environment:2})
+            paySdk.setCurrentEnvironment({environment:0})
             paySdk.startPay(params, function (ret, error) {
                 if (ret) {
                     alert(JSON.stringify(ret))
