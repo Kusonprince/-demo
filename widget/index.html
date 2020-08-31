@@ -31,9 +31,9 @@
             }
             paySdk.startPay(params, function (ret, error) {
                 if (ret) {
-                    alert(ret)
+                    alert(JSON.stringify(ret))
                 } else {
-                    alert(error)
+                    alert(JSON.stringify(error))
                 }
             })
         },false)
