@@ -6,6 +6,10 @@
     <title>云收demo</title>
     <link rel="stylesheet" type="text/css" href="css/api.css" />
     <link rel="stylesheet" type="text/css" href="css/box.css" />
+    <style>
+        input{width: 80%;line-height: 50px;margin-top: 20px}
+        div{line-height: 50px;text-align: center;background: dodgerblue;color: white;margin: 20px;}
+    </style>
     <script type="text/javascript" src="script/public.js"></script>
     <script type="text/javascript">
         var paySdk;
@@ -15,20 +19,30 @@
     </script>
 </head>
 <body>
+    <input id="orderId" placeholder="请输入订单号">
+    <input id="merchantNo" placeholder="请输入商编">
     <div id="test2">测试拉起刷脸</div>
     <script>
+        var orderId = document.getElementById('orderId');
+        var merchantNo = document.getElementById('merchantNo');
         var test2 = document.getElementById("test2")
         test2.addEventListener('click', function () {
-            var payways = [{payWay:'ALIPAY_SDK_ZFB'},{payWay:'FACEPAY_SDK_YP',slogan:'推荐'},{payWay:'WECHATPAY_SDK_WX'},{payWay:'UNIONPAY_SDK_YP'}]
+            var requestNo = orderId.value
+            var parentMerchantNo = merchantNo.value
+            if (!requestNo || !parentMerchantNo) {
+                alert('请输入正确订单号和商编')
+                return
+            }
+            var payways = [{payWay:'ALIPAY_SDK_ZFB'},{payWay:'FACEPAY_SDK_YP',slogan:'推荐'},{payWay:'WECHATPAY_MP_YP',wxAppId:'wxf90fd2156807d2a8',wxOriginalId:'gh_c3dc3ce002b3'},{payWay:'UNIONPAY_SDK_YP'}]
             var orderInfo = {
                 orderAmount:"0.02",
                 orderName:"100抖币",
                 payWays:payways,
-                requestNo:"TR100102092020083113246780",
+                requestNo:requestNo,
             }
             var params = {
                 orderInfo: JSON.stringify(orderInfo),
-                parentMerchantNo: '1038646647',
+                parentMerchantNo: parentMerchantNo,
             }
             paySdk.setCurrentEnvironment({environment:0})
             paySdk.startPay(params, function (ret, error) {
