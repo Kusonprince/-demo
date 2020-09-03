@@ -21,7 +21,7 @@
 <body>
     <input id="orderId" placeholder="请输入订单号">
     <input id="merchantNo" placeholder="请输入商编">
-    <div id="test2">测试拉起刷脸</div>
+    <div id="test2">测试拉起收银台</div>
     <script>
         var orderId = document.getElementById('orderId');
         var merchantNo = document.getElementById('merchantNo');
@@ -33,7 +33,9 @@
                 alert('请输入正确订单号和商编')
                 return
             }
+            //支付方式配置（可根据自己需要的支付方式进行配置，其中如果使用微信小程序支付通道，建议按照该demo方式将应用appid<您的app在微信开放平台申请的appId>、小程序原始id<您在微信公众平台申请的小程序原始id>在此处进行配置）
             var payways = [{payWay:'ALIPAY_SDK_ZFB'},{payWay:'FACEPAY_SDK_YP',slogan:'推荐'},{payWay:'WECHATPAY_MP_YP',wxAppId:'wxf90fd2156807d2a8',wxOriginalId:'gh_c3dc3ce002b3'},{payWay:'UNIONPAY_SDK_YP'}]
+            //支付订单信息
             var orderInfo = {
                 orderAmount:"0.02",
                 orderName:"100抖币",
@@ -42,12 +44,17 @@
             }
             var params = {
                 orderInfo: JSON.stringify(orderInfo),
-                parentMerchantNo: parentMerchantNo,
+                parentMerchantNo: parentMerchantNo, //运营商商编（对接入网时由蜜堂运营提供）
             }
+            //设置环境（不调用该方法默认为0生产、1内测、2 qa）
             paySdk.setCurrentEnvironment({environment:0})
+            //设置刷脸认证码（根据app包名，由蜜堂提供）
             paySdk.setLicenseId({licenseId:'mzg-app-face-face-android'})
+            //设置身份识别码（由蜜堂提供，各运营商不同）
             paySdk.setAuthCode({authCode:'e9ee892678aa9fdb11e59ce9107d414b'})
+            //设置调起测试版微信小程序支付（不设置时默认调起生产小程序）
             paySdk.setMiniProgramTest({test:true})
+            //调起支付收银台（以上配置方法一定要在调起支付收银台前调用）
             paySdk.startPay(params, function (ret, error) {
                 if (ret) {
                     alert(JSON.stringify(ret))
