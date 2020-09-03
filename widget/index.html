@@ -37,10 +37,10 @@
             var payways = [{payWay:'ALIPAY_SDK_ZFB'},{payWay:'FACEPAY_SDK_YP',slogan:'推荐'},{payWay:'WECHATPAY_MP_YP',wxAppId:'wxf90fd2156807d2a8',wxOriginalId:'gh_c3dc3ce002b3'},{payWay:'UNIONPAY_SDK_YP'}]
             //支付订单信息
             var orderInfo = {
-                orderAmount:"0.02",
-                orderName:"100抖币",
-                payWays:payways,
-                requestNo:requestNo,
+                orderAmount:"0.02", //订单金额
+                orderName:"100抖币", //商品名称
+                payWays:payways, //支付方式
+                requestNo:requestNo, //订单号
             }
             var params = {
                 orderInfo: JSON.stringify(orderInfo),
