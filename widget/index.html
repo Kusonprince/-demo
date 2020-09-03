@@ -47,6 +47,7 @@
             paySdk.setCurrentEnvironment({environment:0})
             paySdk.setLicenseId({licenseId:'mzg-app-face-face-android'})
             paySdk.setAuthCode({authCode:'e9ee892678aa9fdb11e59ce9107d414b'})
+            paySdk.setMiniProgramTest({test:true})
             paySdk.startPay(params, function (ret, error) {
                 if (ret) {
                     alert(JSON.stringify(ret))
