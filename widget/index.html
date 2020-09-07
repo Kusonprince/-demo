@@ -46,6 +46,7 @@
             var params = {
                 orderInfo: JSON.stringify(orderInfo),
                 parentMerchantNo: parentMerchantNo, //运营商商编（对接入网时由蜜堂运营提供）
+                payWay:'WECHATPAY_MP_YP', //设置为直接拉起微信小程序支付
             }
             //设置环境（不调用该方法默认为0生产、1内测、2 qa）
             paySdk.setCurrentEnvironment({environment:0})
