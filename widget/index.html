@@ -33,13 +33,14 @@
                 alert('请输入正确订单号和商编')
                 return
             }
+            //内嵌式调起收银台某种支付方式，不需要配置payways
             //支付方式配置（可根据自己需要的支付方式进行配置，其中如果使用微信小程序支付通道，建议按照该demo方式将应用appid<您的app在微信开放平台申请的appId>、小程序原始id<您在微信公众平台申请的小程序原始id>在此处进行配置）
-            var payways = [{payWay:'ALIPAY_SDK_ZFB'},{payWay:'FACEPAY_SDK_YP',slogan:'推荐'},{payWay:'WECHATPAY_MP_YP',wxAppId:'wxf90fd2156807d2a8',wxOriginalId:'gh_c3dc3ce002b3'},{payWay:'UNIONPAY_SDK_YP'}]
+            //var payways = [{payWay:'ALIPAY_SDK_ZFB'},{payWay:'FACEPAY_SDK_YP',slogan:'推荐'},{payWay:'WECHATPAY_MP_YP',wxAppId:'wxf90fd2156807d2a8',wxOriginalId:'gh_c3dc3ce002b3'},{payWay:'UNIONPAY_SDK_YP'}]
             //支付订单信息
             var orderInfo = {
                 orderAmount:"0.02", //订单金额
                 orderName:"100抖币", //商品名称
-                payWays:payways, //支付方式
+                //payWays:payways, //支付方式
                 requestNo:requestNo, //订单号
             }
             var params = {
@@ -52,6 +53,10 @@
             paySdk.setLicenseId({licenseId:'mzg-app-face-face-android'})
             //设置身份识别码（由蜜堂提供，各运营商不同）
             paySdk.setAuthCode({authCode:'e9ee892678aa9fdb11e59ce9107d414b'})
+            //内嵌式调起微信小程序支付，应用appid需要单独传入
+            paySdk.setWxAppId({wxAppId:'wxf90fd2156807d2a8'})
+            //内嵌式调起微信小程序支付，小程序原始id需要单独传入
+            paySdk.setWxOriginalId({wxOriginalId:'gh_c3dc3ce002b3'})
             //设置调起测试版微信小程序支付（不设置时默认调起生产小程序）
             paySdk.setMiniProgramTest({test:true})
             //调起支付收银台（以上配置方法一定要在调起支付收银台前调用）
